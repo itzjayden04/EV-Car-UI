@@ -1,19 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:fitsSystemWindows="true">
 
+    <!-- Main Dashboard -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F5F7"
+        tools:context=".MainActivity">
+
+
+
+    <!-- Greeting: small text -->
     <TextView
+        android:id="@+id/tvGreeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/greeting"
+        android:textColor="#777780"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- User name: main heading -->
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/user_name"
+        android:textColor="#202027"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvGreeting" />
+
+
+    <!-- Hamburger Menu Button -->
+    <ImageButton
+        android:id="@+id/btnMenu"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Open navigation menu"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Vehicle overview card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardVehicle"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="20dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUserName">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Vehicle name -->
+            <TextView
+                android:id="@+id/tvVehicleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vehicle_name"
+                android:textColor="#202027"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <!-- Vehicle subtitle -->
+            <TextView
+                android:id="@+id/tvVehicleStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/vehicle_status"
+                android:textColor="#777780"
+                android:textSize="14sp" />
+
+
+            <!-- Battery percentage -->
+            <TextView
+                android:id="@+id/tvBatteryPercentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/battery_percentage"
+                android:textColor="#3026B9"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <!-- Battery charge indicator -->
+            <ProgressBar
+                android:id="@+id/pbBattery"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="10dp"
+                android:max="100"
+                android:progress="85"
+                android:progressTint="#3026B9"
+                android:progressBackgroundTint="#E8E6F5" />
+
+
+            <!-- Estimated driving range -->
+            <TextView
+                android:id="@+id/tvVehicleRange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/vehicle_range"
+                android:textColor="#777780"
+                android:textSize="14sp" />
+
+
+            <!-- Vehicle illustration area -->
+            <FrameLayout
+                android:id="@+id/vehicleImageContainer"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="12dp"
+                android:background="#F5F5F7">
+
+
+                <!-- Electric car illustration -->
+                <ImageView
+                    android:id="@+id/ivVehicle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/vehicle_name"
+                    android:padding="32dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ev_car" />
+
+
+            </FrameLayout>
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <!-- Vehicle controls section heading -->
+    <TextView
+        android:id="@+id/tvControlsHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/vehicle_controls"
+        android:textColor="#202027"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardVehicle" />
+
+
+
+    <!-- Engine control button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEngine"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/control_engine"
+        android:textAllCaps="false"
+        android:textColor="#3026B9"
+        android:textSize="16sp"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="20dp"
+        app:elevation="2dp"
+        app:icon="@drawable/ic_engine_vector"
+        app:iconGravity="textTop"
+        app:iconSize="28dp"
+        app:iconTint="#3026B9"
+        app:layout_constraintEnd_toStartOf="@id/btnTrunk"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvControlsHeading" />
+
+    <!-- Trunk control button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTrunk"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/control_trunk"
+        android:textAllCaps="false"
+        android:textColor="#3026B9"
+        android:textSize="16sp"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="20dp"
+        app:elevation="2dp"
+        app:icon="@drawable/ic_trunk_vector"
+        app:iconGravity="textTop"
+        app:iconSize="28dp"
+        app:iconTint="#3026B9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnEngine"
+        app:layout_constraintTop_toBottomOf="@id/tvControlsHeading" />
+
+    <!-- Alarm control button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAlarm"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/control_alarm"
+        android:textAllCaps="false"
+        android:textColor="#3026B9"
+        android:textSize="16sp"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="20dp"
+        app:elevation="2dp"
+        app:icon="@drawable/ic_alarm_vector"
+        app:iconGravity="textTop"
+        app:iconSize="28dp"
+        app:iconTint="#3026B9"
+        app:layout_constraintEnd_toStartOf="@id/btnLock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnEngine" />
+
+    <!-- Lock control button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLock"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/control_lock"
+        android:textAllCaps="false"
+        android:textColor="#3026B9"
+        android:textSize="16sp"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="20dp"
+        app:elevation="2dp"
+        app:icon="@drawable/ic_lock_vector"
+        app:iconGravity="textTop"
+        app:iconSize="28dp"
+        app:iconTint="#3026B9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnAlarm"
+        app:layout_constraintTop_toBottomOf="@id/btnTrunk" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Navigation Drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/drawer_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
+

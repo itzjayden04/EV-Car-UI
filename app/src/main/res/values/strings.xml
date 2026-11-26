@@ -1,3 +1,38 @@
 <resources>
+
+    <!-- Application name -->
     <string name="app_name">EV Car UI</string>
+
+    <!-- Greeting section -->
+    <string name="greeting">Good Morning</string>
+    <string name="user_name">Kow Yong Chen</string>
+
+    <!-- Vehicle information -->
+    <string name="vehicle_name">Tesla Model 3</string>
+    <string name="vehicle_status">Your vehicle</string>
+
+    <!-- Battery information -->
+    <string name="battery_percentage">85% Battery</string>
+
+    <!-- Vehicle range -->
+    <string name="vehicle_range">Range: 320 km</string>
+
+    <!-- Previous placeholder text (currently unused) -->
+    <string name="vehicle_illustration">Vehicle Illustration</string>
+
+    <!-- Vehicle controls -->
+    <string name="vehicle_controls">Vehicle Control</string>
+
+    <!-- Engine control button-->
+    <string name="control_engine">Engine</string>
+
+    <!-- Trunk control button -->
+    <string name="control_trunk">Trunk</string>
+
+    <!-- Alarm control button-->
+    <string name="control_alarm">Alarm</string>
+
+    <!-- Lock control button -->
+    <string name="control_lock">Lock</string>
+
 </resources>
